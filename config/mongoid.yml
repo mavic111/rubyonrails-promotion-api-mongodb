@@ -176,9 +176,10 @@ development:
 test:
   clients:
     default:
-      database: nizam_backend_test
-      hosts:
-        - localhost:27017
+      uri:
+      # database: nizam_backend_test
+      # hosts:
+      #   - localhost:27017
       options:
         read:
           mode: :primary
