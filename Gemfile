@@ -12,6 +12,9 @@ gem "puma", "~> 5.0"
 # Use mongoid for MongoDB driver
 gem "mongoid", "~> 8.0"
 
+# Use pagy for pagination
+gem 'pagy', '~> 5.10'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 

@@ -3,6 +3,7 @@ module Api
     class Promotion
       include Mongoid::Document
       include Mongoid::Timestamps
+      store_in collection: "promotions"
       field :title, type: String
       field :description, type: String
       field :code, type: String

@@ -3,6 +3,7 @@ module Api
     class Platform
       include Mongoid::Document
       include Mongoid::Timestamps
+      store_in collection: "platforms"
       field :name, type: String
       field :type, type: String
       field :code, type: String

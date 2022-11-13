@@ -5,14 +5,17 @@ module Api
       
       # GET /payments
       def index
-        @payments = Payment.all
-        
-        render json: @payments
+        @pagy, @records = pagy_get_items(Payment.all.order(created_at: 1), {items: params[:limit] || 10, offset: 0})
+        if @records
+          render json: {code: 200, status: "OK", data: @records, page: @pagy.page, next: @pagy.next, count: @pagy.in, limit: @pagy.items}
+        else
+          render json: {code: 200, status: "OK", data: []}
+        end
       end
 
       # GET /payments/1
       def show
-        render json: @payment
+        render json: {code: 200, status: "OK", data: @payment}
       end
 
       # POST /payments
@@ -25,7 +28,7 @@ module Api
           render json: @payment.errors, status: :unprocessable_entity
         end
       end
-
+      
       # PATCH/PUT /payments/1
       def update
         if @payment.update(payment_params)

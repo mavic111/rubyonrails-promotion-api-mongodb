@@ -3,6 +3,7 @@ module Api
     class Payment
       include Mongoid::Document
       include Mongoid::Timestamps
+      store_in collection: "payments"
       field :name, type: String
       field :type, type: String
       field :code, type: String

@@ -4,7 +4,7 @@ module Api
   module V1
     RSpec.describe Promotion, type: :model do
       subject {
-        described_class.new(title: "Title", description: "Description", code: "Code", platform_id: Platform.first._id.to_s, payment_id: Payment.first._id.to_s, start_time: DateTime.now, end_time: DateTime.now + 5000, is_verified: true, click_count: 0)
+        described_class.new(title: "Title", description: "Description", code: "Code", platform_id: Platform.new(name: "Name", type: "Type", code: "Code"), payment_id: Payment.new(name: "Name", type: "Type", code: "Code"), start_time: DateTime.now, end_time: DateTime.now + 5000, is_verified: true, click_count: 0)
       }
       it "is valid with valid attributes" do
         expect(subject).to be_valid
