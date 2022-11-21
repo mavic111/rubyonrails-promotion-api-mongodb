@@ -29,14 +29,6 @@ module Api
         subject.end_time = nil
         expect(subject).to_not be_valid
       end
-      it "is not valid without a is_verified" do
-        subject.is_verified = nil
-        expect(subject).to_not be_valid
-      end
-      it "is not valid without a click_count" do
-        subject.click_count = nil
-        expect(subject).to_not be_valid
-      end
       it "is not valid without a payment_id" do
         subject.payment_id = nil
         expect(subject).to_not be_valid

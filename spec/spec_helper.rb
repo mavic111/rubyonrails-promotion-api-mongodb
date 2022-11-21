@@ -25,6 +25,9 @@ RSpec.configure do |config|
     #     # => "be bigger than 2 and smaller than 4"
     # ...rather than:
     #     # => "be bigger than 2"
+    config.before(:each) do
+      Rails.logger.debug self.class.description         
+    end
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 

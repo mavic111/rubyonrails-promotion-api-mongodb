@@ -4,7 +4,7 @@ development:
     # Defines the default client. (required)
     default:
       # Mongoid can connect to a URI accepted by the driver:
-      uri:
+      uri: <%=  ENV["MONGOSRV_URI_DEV"] %>
 
       # Otherwise define the parameters separately.
       # This defines the name of the default database that Mongoid can connect to.
@@ -153,7 +153,7 @@ development:
 
     # Raise an error when performing a #find and the document is not found.
     # (default: true)
-    # raise_not_found_error: true
+    raise_not_found_error: false
 
     # Raise an error when defining a scope with the same name as an
     # existing method. (default: false)
@@ -173,10 +173,18 @@ development:
     # indexes in the background by default. (default: false)
     # background_indexing: false
 
+production:
+  sessions:
+    default:
+    uri: <%= ENV["MONGOSRV_URI_PROD"] %>
+    options:
+      skip_version_check: true
+      safe: true
+
 test:
   clients:
     default:
-      uri:
+      uri: <%= ENV["MONGOSRV_URI_TEST"] %>
       # database: nizam_backend_test
       # hosts:
       #   - localhost:27017

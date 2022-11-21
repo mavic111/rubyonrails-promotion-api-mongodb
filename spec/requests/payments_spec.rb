@@ -22,12 +22,14 @@ module Api
           expect(json[:code]).to eq("Test Code")
         end
       end
+      
       describe "GET api/v1/payments" do
         it "works!" do
           get "/api/v1/payments"
           expect(response).to have_http_status(200)
         end
       end
+      
       describe "GET /api/v1/payments/:id" do
         it "works!" do
           

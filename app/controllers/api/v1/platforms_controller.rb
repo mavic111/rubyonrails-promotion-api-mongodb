@@ -1,9 +1,15 @@
+require 'docs/v1/platform'
+
 module Api
   module V1
     class PlatformsController < ApplicationController
       before_action :set_platform, only: %i[ show update destroy ]
-    
-      # GET /platforms
+      include Docs::V1::Platform
+
+      # GET /v1/platforms
+      api :GET, '/v1/platforms', 'Get all platforms data'
+      param :page, :number, desc: 'page of the requested data'
+      param :limit, :number, desc: 'limit of the requested data'
       def index
         @pagy, @records = pagy_get_items(Platform.all.order(created_at: 1), {items: params[:limit] || 10, offset: 0})
         if @records
@@ -13,12 +19,20 @@ module Api
         end
       end
     
-      # GET /platforms/1
+      # GET /v1/platforms/1
+      api :GET, '/v1/platforms/:id', 'Get platform data'
+      param :id, String, desc: 'id of the requested data', required: true
       def show
-        render json: @platform
+        if @platform
+          render json: {code: 200, status: "OK", data: @platform}
+        else
+          render json: {code: 404, status: "NOT_FOUND", id: params[:id]}, status: :not_found
+        end
       end
     
-      # POST /platforms
+      # POST /v1/platforms
+      api :POST, '/v1/platforms', 'Add platform data'
+      param_group :platform
       def create
         @platform = Platform.new(platform_params)
     
@@ -29,7 +43,10 @@ module Api
         end
       end
     
-      # PATCH/PUT /platforms/1
+      # PATCH/PUT /v1/platforms/1
+      api :PUT, '/v1/platforms/:id', 'Update platform data'
+      param :id, String, desc: 'id of the data', required: true
+      param_group :platform
       def update
         if @platform.update(platform_params)
           render json: @platform
@@ -38,9 +55,17 @@ module Api
         end
       end
     
-      # DELETE /platforms/1
+      # DELETE /v1/platforms/1
+      api :DELETE, '/v1/platforms/:id', 'Delete platform data'
+      param :id, String, desc: 'id of the data', required: true
       def destroy
-        @platform.destroy
+        begin
+          @platform.destroy
+        rescue Mongoid::Errors::DeleteRestriction
+          render json: {code: 403, message: "Cannot delete due to restriction"},status: :forbidden
+        rescue
+          render json: {code: 500, message: "Internal Server Error"},status: :internal_server_error
+        end
       end
     
       private

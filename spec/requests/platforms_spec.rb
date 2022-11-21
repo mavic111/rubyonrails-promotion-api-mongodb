@@ -30,7 +30,6 @@ module Api
       end
       describe "GET /api/v1/platforms/:id" do
         it "works!" do
-          
           id = Platform.find_by(:name => "Test Name")._id.to_s 
           get "/api/v1/platforms/#{id}" 
           expect(response).to have_http_status(200)
