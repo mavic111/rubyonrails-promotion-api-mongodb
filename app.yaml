@@ -1,6 +1,6 @@
 env: standard
-runtime: ruby
-service: rubyonrails_api
+runtime: ruby30
+service: rails-promotion-api
 instance_class: F1
 automatic_scaling:
   min_idle_instances: automatic
