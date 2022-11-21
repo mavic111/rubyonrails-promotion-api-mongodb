@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails API with MongoDB as the database for promotion website.
 
-Things you may want to cover:
+There are three models:
 
-* Ruby version
+- Payment
+- Platform
+- Promotion
 
-* System dependencies
+They have one to many association in pairs, Payment-Promotion and Platform-Promotion
 
-* Configuration
+Details:
 
-* Database creation
+- Ruby Version: 3.1.2
+- Database: MongoDB
+- ORM: Mongoid
 
-* Database initialization
+Configuration:
 
-* How to run the test suite
+You may configure the Mongoid URI in config/mongoid.yml directly or by creating local_env.yml file.
 
-* Services (job queues, cache servers, search engines, etc.)
+How to run the server:
 
-* Deployment instructions
+`rails s`
 
-* ...
+How to run rspec test
+
+`bundle exec rspec`

@@ -13,7 +13,7 @@ module Api
       def index
         @pagy, @records = pagy_get_items(Platform.all.order(created_at: 1), {items: params[:limit] || 10, offset: 0})
         if @records
-          render json: {code: 200, status: "OK", data: @records, page: @pagy.page, next: @pagy.next, count: @pagy.in, limit: @pagy.items}
+          render json: {code: 200, status: "OK", data: @records, page: @pagy.page, next: @pagy.next, pages: @pagy.pages, count: @pagy.in, limit: @pagy.items}
         else
           render json: {code: 200, status: "OK", data: []}
         end
