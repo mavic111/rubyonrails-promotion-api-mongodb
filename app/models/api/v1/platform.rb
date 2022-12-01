@@ -7,6 +7,7 @@ module Api
       field :name, type: String
       field :type, type: String
       field :code, type: String
+      field :promotion_ids, type: Array
       has_and_belongs_to_many :promotions, dependent: :restrict_with_exception
       validates :name, presence: true
       validates :type, presence: true

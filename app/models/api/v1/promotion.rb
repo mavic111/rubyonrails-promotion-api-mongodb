@@ -23,10 +23,13 @@ module Api
       validates :code, presence: true, uniqueness: { case_sensitive: false }
       validates :start_time, presence: true
       validates :end_time, presence: true
+      
       def as_json(*args)
         attrs = super
-        attrs["platform_id"] = self.platform_id.to_s if attrs.has_key?("platform_id") && self.platform_id != nil 
-        attrs["payment_id"] = self.payment_id.to_s if attrs.has_key?("payment_id") && self.payment_id != nil 
+        attrs["platform"] = { _id: self.platform._id.to_s, name: self.platform.name } if attrs.has_key?("platform_id") && self.platform_id != nil 
+        attrs["payment"] = {_id: self.payment._id.to_s, name: self.payment.name} if attrs.has_key?("payment_id") && self.payment_id != nil 
+        attrs.delete("platform_id")
+        attrs.delete("payment_id")
         attrs
       end
 
