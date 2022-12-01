@@ -23,3 +23,4 @@
 /config/master.key
 
 local_env.yml
+app.yaml
