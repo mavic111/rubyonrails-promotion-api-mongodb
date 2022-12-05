@@ -64,7 +64,7 @@ development:
         # local_threshold: 0.015
 
         # The timeout in seconds for selecting a server for an operation. (default: 30)
-        server_selection_timeout: 10
+        server_selection_timeout: 5
 
         # The maximum number of connections in the connection pool. (default: 5)
         # max_pool_size: 5
@@ -178,8 +178,7 @@ production:
     default:
       uri: <%= ENV["MONGOSRV_URI_PROD"] %>
       options:
-        skip_version_check: true
-        safe: true
+        server_selection_timeout: 30
 
 test:
   clients:
