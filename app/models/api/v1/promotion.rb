@@ -3,8 +3,8 @@ module Api
     class Promotion
       include Mongoid::Document
       include Mongoid::Timestamps
+      before_save :set_default_value
       before_update :record_activity
-      before_validation :set_default_value
       store_in collection: "promotions"
       field :title, type: String
       field :description, type: String

@@ -27,3 +27,7 @@ How to run the server:
 How to run rspec test
 
 `bundle exec rspec`
+
+How to create secret key base
+
+`rails secret`
