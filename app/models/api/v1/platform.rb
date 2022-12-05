@@ -7,16 +7,10 @@ module Api
       field :name, type: String
       field :type, type: String
       field :code, type: String
-      field :promotion_ids, type: Array
-      has_and_belongs_to_many :promotions, dependent: :restrict_with_exception
+      has_many :promotions, inverse_of: :platform, dependent: :destroy
       validates :name, presence: true
       validates :type, presence: true
       validates :code, presence: true, uniqueness: { case_sensitive: false }
-      def as_json(*args)
-        attrs = super
-        attrs["promotion_ids"] = self.promotion_ids.collect {|x| x.to_s} if attrs.has_key?("promotion_ids")
-        attrs
-      end
     end
   end
 end
