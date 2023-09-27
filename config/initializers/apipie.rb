@@ -1,5 +1,5 @@
 Apipie.configure do |config|
-  config.app_name                = "Nizam Backend"
+  config.app_name                = "Rails Promotion"
   config.copyright               = "Muhammad Nizamuddin Aulia"
   config.api_base_url            = "/api"
   config.doc_base_url            = "/api/docs"
