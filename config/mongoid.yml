@@ -4,16 +4,16 @@ development:
     # Defines the default client. (required)
     default:
       # Mongoid can connect to a URI accepted by the driver:
-      # uri: <%=  ENV["MONGOSRV_URI_DEV"] %>
+      uri: <%=  ENV["MONGO_URL_DEV"] %>
 
       # Otherwise define the parameters separately.
       # This defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: nizam_ruby_backend_dev
+      # database: rails_promotion_development
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
-      hosts:
-        - <%=  ENV["MONGOSRV_HOST_DEV"] || "localhost:27017" %>
+      # hosts:
+      #   - localhost:27017
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
         # Please refer to the driver documentation of the version of the mongo gem you are using
@@ -113,7 +113,7 @@ development:
         # The file containing concatenated certificate authority certificates
         # used to validate certs passed from the other end of the connection.
         # ssl_ca_cert: /path/to/ca.cert
-
+        
         # Whether to truncate long log lines. (default: true)
         # truncate_logs: true
 
@@ -124,15 +124,15 @@ development:
     # exceed 128 bytes. It is also used as the database name if the
     # database name is not explicitly defined. (default: nil)
     # app_name: MyApplicationName
-
+    
     # Mark belongs_to associations as required by default, so that saving a
     # model with a missing belongs_to association will trigger a validation
     # error. (default: true)
     # belongs_to_required_by_default: true
-
+    
     # Raise an exception when a field is redefined. (default: false)
     # duplicate_fields_exception: false
-
+    
     # Include the root model name in json serialization. (default: false)
     # include_root_in_json: false
 
@@ -146,14 +146,14 @@ development:
     # Set the Mongoid and Ruby driver log levels when Mongoid is not using
     # Ruby on Rails logger instance. (default: :info)
     # log_level: :info
-
+    
     # Preload all models in development, needed when models use
     # inheritance. (default: false)
     # preload_models: false
 
     # Raise an error when performing a #find and the document is not found.
     # (default: true)
-    # raise_not_found_error: false
+    # raise_not_found_error: true
 
     # Raise an error when defining a scope with the same name as an
     # existing method. (default: false)
@@ -173,20 +173,13 @@ development:
     # indexes in the background by default. (default: false)
     # background_indexing: false
 
-production:
-  clients:
-    default:
-      uri: <%= ENV["MONGOSRV_URI_PROD"] %>
-      options:
-        server_selection_timeout: 30
-
 test:
   clients:
     default:
-      # uri: <%= ENV["MONGOSRV_URI_TEST"] %>
-      database: nizam_ruby_backend_test
-      hosts:
-        - <%= ENV["MONGOSRV_HOST_TEST"] || "localhost:27017" %>
+      uri: <%= ENV["MONGO_URL_TEST"] %>
+      # database: rails_promotion_test
+      # hosts:
+      #   - localhost:27017
       options:
         read:
           mode: :primary

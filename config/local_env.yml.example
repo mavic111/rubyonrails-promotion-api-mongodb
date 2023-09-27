@@ -1,0 +1,2 @@
+MONGO_URL_DEV: 'mongodb+srv://user:password@hostname/rails_promotion_development'
+MONGO_URL_TEST: 'mongodb+srv://user:password@hostname/rails_promotion_test'

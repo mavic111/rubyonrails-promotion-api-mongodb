@@ -12,22 +12,26 @@ They have one to many association in pairs, Payment-Promotion and Platform-Promo
 
 Details:
 
-- Ruby Version: 3.1.2
+- Ruby Version: 3.2.2
 - Database: MongoDB
 - ORM: Mongoid
 
 Configuration:
 
-You may configure the Mongoid URI in config/mongoid.yml directly or by creating local_env.yml file.
+You may configure the Mongoid URL first in config/local_env.yml file.
 
-How to run the server:
+## Create database collections
+
+`rails db:mongoid:create_collections`
+
+## Run the server
 
 `rails s`
 
-How to run rspec test
+## Run rspec test
 
 `bundle exec rspec`
 
-How to create secret key base
+## Create secret key base
 
 `rails secret`
