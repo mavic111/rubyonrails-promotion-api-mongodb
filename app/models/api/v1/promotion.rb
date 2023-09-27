@@ -20,11 +20,11 @@ module Api
       validates :code, presence: true, uniqueness: { case_sensitive: false }
       validates :start_time, presence: true
       validates :end_time, presence: true
-      
+
       def as_json(*args)
         attrs = super
-        attrs["platform"] = { _id: self.platform._id.to_s, name: self.platform.name } 
-        attrs["payment"] = {_id: self.payment._id.to_s, name: self.payment.name}
+        attrs["platform"] = { _id: platform._id.to_s, name: platform.name }
+        attrs["payment"] = { _id: payment._id.to_s, name: payment.name }
         attrs.delete("platform_id")
         attrs.delete("payment_id")
         attrs
@@ -34,19 +34,16 @@ module Api
 
       def record_activity
         # record an activity
-        if self.payment_id_changed?
-          @old_payment_id = self.payment_id_was
-        end
-        if self.platform_id_changed?
-          @old_platform_id = self.platform_id_was
-        end
+        @old_payment_id = payment_id_was if payment_id_changed?
+        return unless platform_id_changed?
+
+        @old_platform_id = platform_id_was
       end
 
       def set_default_value
-        self.click_count = 0 if self.click_count == nil
-        self.is_verified = false if self.is_verified == nil
+        self.click_count = 0 if click_count.nil?
+        self.is_verified = false if is_verified.nil?
       end
     end
   end
 end
-
