@@ -47,12 +47,15 @@ gem "rack-attack"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "brakeman", "~> 6.0"
+  gem "bundler-audit", "~> 0.9.1"
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "factory_bot", "~> 6.2.0"
   gem "rspec-rails", "~> 6.0.0"
   gem "rubocop", "~> 1.56"
-  gem "brakeman", "~> 6.0"
-  gem "bundler-audit", "~> 0.9.1"
+  gem "rubocop-factory_bot", "~> 2.24"
+  gem "rubocop-rails", "~> 2.21"
+  gem "rubocop-rspec", "~> 2.24"
 end
 
 group :development do
