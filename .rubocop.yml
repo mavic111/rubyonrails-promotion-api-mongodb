@@ -24,8 +24,8 @@ Metrics/MethodLength:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Style/Documentation:
-#   Enabled: false
+Style/Documentation:
+  Enabled: false
 
 RSpec/ExampleLength:
   Enabled: false
