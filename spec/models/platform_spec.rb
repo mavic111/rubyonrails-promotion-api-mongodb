@@ -1,27 +1,29 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Api
   module V1
     RSpec.describe Platform, type: :model do
-      subject {
+      subject(:platform) do
         described_class.new(name: "Name", type: "Type", code: "Code")
-      }
+      end
       it "is valid with valid attributes" do
-        expect(subject).to be_valid
+        expect(platform).to be_valid
       end
+
       it "is not valid without a name" do
-        subject.name = nil
-        expect(subject).to_not be_valid
+        platform.name = nil
+        expect(platform).not_to be_valid
       end
+
       it "is not valid without a type" do
-        subject.type = nil
-        expect(subject).to_not be_valid
+        platform.type = nil
+        expect(platform).not_to be_valid
       end
+
       it "is not valid without a code" do
-        subject.code = nil
-        expect(subject).to_not be_valid
+        platform.code = nil
+        expect(platform).not_to be_valid
       end
     end
   end
 end
-

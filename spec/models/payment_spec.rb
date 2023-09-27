@@ -1,27 +1,29 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Api
   module V1
     RSpec.describe Payment, type: :model do
-      subject {
+      subject(:payment) do
         described_class.new(name: "Name", type: "Type", code: "Code")
-      }
+      end
       it "is valid with valid attributes" do
-        expect(subject).to be_valid
+        expect(payment).to be_valid
       end
+
       it "is not valid without a name" do
-        subject.name = nil
-        expect(subject).to_not be_valid
+        payment.name = nil
+        expect(payment).not_to be_valid
       end
+
       it "is not valid without a type" do
-        subject.type = nil
-        expect(subject).to_not be_valid
+        payment.type = nil
+        expect(payment).not_to be_valid
       end
+
       it "is not valid without a code" do
-        subject.code = nil
-        expect(subject).to_not be_valid
+        payment.code = nil
+        expect(payment).not_to be_valid
       end
     end
   end
 end
-
