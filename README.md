@@ -22,16 +22,24 @@ You may configure the Mongoid URL first in config/local_env.yml file.
 
 ## Create database collections
 
-`rails db:mongoid:create_collections`
+```bash
+rails db:mongoid:create_collections
+```
 
 ## Run the server
 
-`rails s`
+```bash
+rails s
+```
 
 ## Run rspec test
 
-`bundle exec rspec`
+```bash
+bundle exec rspec
+```
 
 ## Create secret key base
 
-`rails secret`
+```
+rails secret
+```
