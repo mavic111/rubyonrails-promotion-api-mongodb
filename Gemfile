@@ -50,9 +50,9 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "factory_bot", "~> 6.2.0"
   gem "rspec-rails", "~> 6.0.0"
-  gem "bundler-audit", "~> 0.9.1"
   gem "rubocop", "~> 1.56"
   gem "brakeman", "~> 6.0"
+  gem "bundler-audit", "~> 0.9.1"
 end
 
 group :development do
